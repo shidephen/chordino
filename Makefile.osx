@@ -1,0 +1,13 @@
+
+VAMP_SDK_DIR = ../vamp-plugin-sdk
+
+BOOST_ROOT = ../boost_1_48_0
+
+ARCHFLAGS ?= -mmacosx-version-min=10.7 -arch x86_64
+OPTFLAGS  ?= -O3 -ffast-math
+PLUGIN_EXT = .dylib
+
+LDFLAGS += $(ARCHFLAGS) -dynamiclib -install_name $(PLUGIN) $(VAMP_SDK_DIR)/libvamp-sdk.a  -exported_symbols_list vamp-plugin.list -framework Accelerate
+
+include Makefile.inc
+

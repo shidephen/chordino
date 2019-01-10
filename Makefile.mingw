@@ -1,0 +1,18 @@
+
+VAMP_SDK_DIR = ../vamp-plugin-sdk
+BOOST_ROOT   = ../boost_1_44_0
+
+# Allow the invoker to specify a particular set of tools through
+# TOOLPREFIX, e.g. for cross-compile
+CC	      = $(TOOLPREFIX)gcc
+CXX	      = $(TOOLPREFIX)g++
+
+ARCHFLAGS     ?=
+OPTFLAGS      ?= -O2 -ffast-math
+
+PLUGIN_EXT = .dll
+
+LDFLAGS += -shared -static -fno-exceptions -static-libgcc -Wl,-soname=$(PLUGIN) $(VAMP_SDK_DIR)/libvamp-sdk.a -Wl,--retain-symbols-file=vamp-plugin.list
+
+include Makefile.inc
+

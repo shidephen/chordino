@@ -1,0 +1,10 @@
+
+VAMP_SDK_DIR = ../vamp-plugin-sdk
+
+OPTFLAGS     = -Wall -O3 -ftree-vectorize -ffast-math
+PLUGIN_EXT   = .so
+
+LDFLAGS      += -shared -Wl,-soname=$(PLUGIN) -L$(VAMP_SDK_DIR) -lvamp-sdk -Wl,--version-script=vamp-plugin.map 
+
+include Makefile.inc
+
